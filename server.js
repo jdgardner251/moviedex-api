@@ -30,15 +30,16 @@ app.get('/movie', (req, res) => {
     // filter movies by genre if genre query param is present
     if (genre) {
         response = response.filter(movie =>
-            movie.genre.toLowerCase().includes(genre.toLocaleLowerCase()))
+            movie.genre.toLowerCase().includes(genre.toLowerCase()))
     }
 
     // filter movies by country if country query param is present
     if (country) {
-        response = response.filter(country =>
-            movie.country.toLocaleLowerCase().includes(country.toLocaleLowerCase()) )
+        response = response.filter(movie =>
+            movie.country.toLowerCase().includes(country.toLowerCase()) )
     }
 
+    // filter movies by vote if vote param is present
     if (avg_vote) {
         const voteNum = parseFloat(avg_vote);
         response = response.filter(movie => movie.avg_vote >= voteNum)
